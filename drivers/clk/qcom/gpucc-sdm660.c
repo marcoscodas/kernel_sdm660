@@ -175,13 +175,8 @@ static struct clk_init_data gpu_clks_init[] = {
 */
 
 static const struct freq_tbl ftbl_gfx3d_clk_src[] = {
-#ifndef CONFIG_GPU_IDLE
 	F_GFX( 19200000, 0,  1, 0, 0,         0),
 	F_GFX(160000000, 0,  2, 0, 0,  640000000),
-#else
-	F_GFX( 19200000, 0,  2, 0, 0,  5320000600),
-	F_GFX(160000000, 0,  2, 0, 0,  532000000),
-#endif
 	F_GFX(266000000, 0,  2, 0, 0,  532000000),
 	F_GFX(370000000, 0,  2, 0, 0,  740000000),
 	F_GFX(430000000, 0,  2, 0, 0,  860000000),
@@ -195,12 +190,7 @@ static const struct freq_tbl ftbl_gfx3d_clk_src[] = {
 };
 
 static const struct freq_tbl ftbl_gfx3d_clk_src_630[] = {
-
-       #ifndef CONFIG_GPU_IDLE
-       F_GFX( 19200000, 0,  1, 0, 0,         0),
-	#else
-	F_GFX( 19200000, 0,  2, 0, 0,         640000000),
-	#endif
+	F_GFX( 19200000, 0,  1, 0, 0,         0),
 	F_GFX(160000000, 0,  2, 0, 0,  640000000),
 	F_GFX(240000000, 0,  2, 0, 0,  480000000),
 	F_GFX(370000000, 0,  2, 0, 0,  740000000),
