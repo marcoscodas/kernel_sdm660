@@ -534,6 +534,19 @@ static inline __must_check bool try_get_page(struct page *page)
 
 	if (WARN_ON_ONCE(atomic_read(&page->_count) <= 0))
 		return false;
+
+	atomic_inc(&page->_count);
+	return true;
+}
+
+static inline __must_check bool try_get_page(struct page *page)
+{
+	if (unlikely(PageTail(page)))
+		if (likely(__get_page_tail(page)))
+			return true;
+
+	if (WARN_ON_ONCE(atomic_read(&page->_count) <= 0))
+		return false;
 	atomic_inc(&page->_count);
 	return true;
 }
